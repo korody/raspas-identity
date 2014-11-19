@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+
+  get 'static_pages/about'
+
   root 'profiles#new'
 
   resources :profiles, only: [:new, :edit]
