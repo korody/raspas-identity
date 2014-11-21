@@ -1,0 +1,43 @@
+html, body
+  height: 100%
+
+// .col-lg-2, .col-lg-4, .col-lg-10
+//   padding: 0
+
+.wrapper
+  @extend .row
+
+.navigation
+  @extend .col-lg-1
+  
+.content
+  @extend .col-lg-11
+  
+  
+// NAV PANEL
+
+.raspas_nav 
+  
+  ul.raspas_nav_menu
+    background-color: $raspas
+    font-size: 20px
+    margin: 0
+    padding: 0
+    width: 60px
+  
+  li
+    text-align: center
+    border-bottom: 1px solid $light-raspas
+    
+    &:active,
+    &.active,
+    &:focus,
+    &:hover
+      background-color: $light-raspas
+    
+  a
+    display: block
+    padding: 16px 0
+    
+  i
+    color: white

@@ -1,0 +1,7 @@
+- content_for :raspas_nav do
+  <!--= link_to (image_tag "logo.png"), root_path-->
+  nav.raspas_nav
+    ul.raspas_nav_menu
+      = nav_link 'home fw', "home", root_path, current_section: section
+      = nav_link 'flask fw', "about", about_path, current_section: section
+      = nav_link 'user fw', "novo usuário", signup_path, current_section: section
