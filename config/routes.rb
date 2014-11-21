@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
 
-  get 'static_pages/about'
+  root 'static_pages#home'
 
-  root 'profiles#new'
-
+  resources :static_pages, only: [:home, :about, :contact]
+  
   resources :profiles, only: [:new, :edit]
   
   # Example of regular route:
