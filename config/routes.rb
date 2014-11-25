@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pagest#contact'
   
-  resources :profiles, only: [:new, :edit]
+  resources :profiles
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

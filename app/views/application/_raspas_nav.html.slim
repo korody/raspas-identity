@@ -1,7 +1,25 @@
 - content_for :raspas_nav do
   <!--= link_to (image_tag "logo.png"), root_path-->
-  nav.raspas_nav
-    ul.raspas_nav_menu
-      = nav_link 'home fw', "home", root_path, current_section: section
-      = nav_link 'flask fw', "about", about_path, current_section: section
-      = nav_link 'user fw', "novo usuário", signup_path, current_section: section
+  <!--nav.raspas_nav-->
+  <!--  ul.raspas_nav_menu-->
+  <!--    = nav_link 'home fw', "home", root_path, current_section: section-->
+  <!--    = nav_link 'flask fw', "about", about_path, current_section: section-->
+      <!--= nav_link 'user fw', "novo usuário", signup_path, current_section: section-->
+  
+  nav.navbar.navbar-default.navbar-fixed-top#menubar role='navigation'
+    .container-fluid
+      .navbar-header
+        button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#site-nav'
+          span class='sr-only' toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      .collapse.navbar-collapse#site-nav
+        = nav_button 'flask fw', "home", root_path, current_section: section
+        = nav_button 'truck fw', "about", about_path, current_section: section
+        = nav_button 'user fw', "novo usuário", signup_path, current_section: section
+        <!--ul.nav.navbar-nav-->
+        <!--  = nav_link 'pencil fw', "home", root_path, current_section: section-->
+        <!--  = nav_link 'flask fw', "about", about_path, current_section: section-->
+        <!--ul.nav.navbar-nav.navbar-right-->
+        <!--  = nav_link 'user fw', "novo usuário", signup_path, current_section: section-->

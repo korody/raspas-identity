@@ -1,43 +1,44 @@
 html, body
   height: 100%
-
-// .col-lg-2, .col-lg-4, .col-lg-10
-//   padding: 0
+  min-height: 100%
 
 .wrapper
   @extend .row
 
 .navigation
-  @extend .col-lg-1
+  // @extend .col-md-1
+  // left: 0
+  // position: fixed
   
 .content
-  @extend .col-lg-11
-  
+  // @extend .col-md-12
+  margin: 65px
   
 // NAV PANEL
 
-.raspas_nav 
+// .raspas_nav 
   
-  ul.raspas_nav_menu
-    background-color: $raspas
-    font-size: 20px
-    margin: 0
-    padding: 0
-    width: 60px
+//   ul.raspas_nav_menu
+//     background-color: $raspas
+//     font-size: 20px
+//     margin: 0
+//     padding: 0
+//     width: 64px
   
-  li
-    text-align: center
-    border-bottom: 1px solid $light-raspas
+//   li
+//     border-bottom: 1px solid $light-raspas
+//     list-style-type: none
+//     text-align: center
     
-    &:active,
-    &.active,
-    &:focus,
-    &:hover
-      background-color: $light-raspas
+//     &:active,
+//     &.active,
+//     &:focus,
+//     &:hover
+//       background-color: $light-raspas
     
-  a
-    display: block
-    padding: 16px 0
+//   a
+//     display: block
+//     padding: 16px 0
     
-  i
-    color: white
+//   i
+//     color: white

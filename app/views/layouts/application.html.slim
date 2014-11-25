@@ -11,8 +11,11 @@ html
       script src="http://html5shim.googlecode.com/svn/trunk/html5.js"
   = body_tag do
     main[role="main"]
-      .wrapper
-        .navigation
-          == yield :raspas_nav
-        .content
-          == yield
+      == yield :raspas_nav
+      .container-fluid
+        .wrapper
+          <!--.navigation-->
+          .content.borderT
+            = render 'flash'
+            == yield
+    // = debug(params) if Rails.env.development?
