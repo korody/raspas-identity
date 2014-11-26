@@ -1,0 +1,19 @@
+- provide :title, "entrar"
+= currently_at "entrar"
+.form-container
+  = form_for(:session, url: signin_path) do |session|
+    = session.label :email, class: 'sr-only'
+    = session.text_field :email, class: 'form-control input-lg', 
+                                 placeholder: 'e-mail', 
+                                 autofocus: true
+    = session.label :password, class: 'sr-only'
+    = session.password_field :password, class: 'form-control input-lg', 
+                                        placeholder: 'senha'
+    .checkbox
+      = session.label :remember_me, class: 'checkbox inline' do
+        = session.check_box :remember_me
+        span lembrar
+    = session.submit 'entrar', class: 'btn btn-lg btn-default btn-block'
+    .form-helper
+      p.pull-right = link_to "cadastre-se", signup_path
+      <!--p = link_to "Esqueceu sua senha?", new_password_reset_path-->

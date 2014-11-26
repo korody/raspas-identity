@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20141121193505) do
     t.integer  "author_id",                            null: false
     t.string   "role",                default: "user", null: false
     t.string   "email",                                null: false
-    t.string   "remember_token"
     t.string   "password_digest"
+    t.string   "remember_digest"
     t.string   "reset_token"
     t.datetime "reset_token_sent_at"
     t.datetime "created_at",                           null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20141121193505) do
 
   add_index "profiles", ["author_id"], name: "index_profiles_on_author_id", using: :btree
   add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true, using: :btree
-  add_index "profiles", ["remember_token"], name: "index_profiles_on_remember_token", using: :btree
+  add_index "profiles", ["remember_digest"], name: "index_profiles_on_remember_digest", using: :btree
   add_index "profiles", ["reset_token"], name: "index_profiles_on_reset_token", using: :btree
 
 end

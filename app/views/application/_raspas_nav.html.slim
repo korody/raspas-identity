@@ -10,7 +10,14 @@
       .collapse.navbar-collapse#site-nav
         = nav_button 'flask fw', "home", root_path, current_section: section
         = nav_button 'truck fw', "about", about_path, current_section: section
-        = nav_button 'user fw', "novo usuário", signup_path, current_section: section
+        - if signed_in?
+          = nav_button 'user fw', "usuário", signup_path, current_section: section
+          button.btn.btn-default.btn-lg.navbar-btn.btn-round  
+            = link_to icon_tag('sign-out fw'), signout_path, method: :delete
+          = current_user.email
+        - else
+          = nav_button 'sign-in fw', "entrar", signin_path, current_section: section
+          = nav_button 'user fw', "novo usuário", signup_path, current_section: section
         <!--ul.nav.navbar-nav-->
         <!--  = nav_link 'pencil fw', "home", root_path, current_section: section-->
         <!--  = nav_link 'flask fw', "about", about_path, current_section: section-->

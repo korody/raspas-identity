@@ -20,6 +20,7 @@ class ProfilesSignupTest < ActionDispatch::IntegrationTest
                                             password_confirmation: "password",
                                             author_id: '1' }
     end
-    # assert_template 'authors/show'
+    assert_template 'static_pages/home'
+    assert is_signed_in?
   end
 end

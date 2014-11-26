@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new profile_params
     if @profile.save
-      # sign_in @profile
+      sign_in @profile
       redirect_to root_path, success: 'Bem-vindo ao raspas!'
     else
       render :new

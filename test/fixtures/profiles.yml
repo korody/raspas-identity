@@ -1,0 +1,4 @@
+elvis:
+  email: elvis@graceland.com
+  password_digest: <%= Profile.digest('password') %>
+  author_id: '1'
