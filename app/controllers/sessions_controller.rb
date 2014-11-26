@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    profile = Profile.find_by(email: params[:session][:email].downcase.strip)
-    if profile && profile.authenticate(params[:session][:password])
+    profile = Profile.find_by(email: params[:email].downcase.strip)
+    if profile && profile.authenticate(params[:password])
       sign_in profile
-      params[:session][:remember_me] == '1' ? remember(profile) : forget(profile)
+      params[:remember_me] == '1' ? remember(profile) : forget(profile)
       redirect_back_or root_path
     else
       flash.now[:danger] = "senha ou e-mail incorretos"
