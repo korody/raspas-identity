@@ -18,7 +18,7 @@ class ProfilesLoginTest < ActionDispatch::IntegrationTest
   
   test "login with valid information followed by logout" do
     get signin_path
-    post signin_path, session: { email: @profile.email, password: 'password', author_id: @profile.author_id }
+    post signin_path, { email: @profile.email, password: 'password', author_id: @profile.author_id }
     assert is_signed_in?
     assert_redirected_to root_path
     follow_redirect!

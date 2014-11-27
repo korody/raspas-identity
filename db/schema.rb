@@ -11,15 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121193505) do
+ActiveRecord::Schema.define(version: 20141126205114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authors", force: true do |t|
+    t.string   "name"
+    t.string   "username"
+    t.string   "slug"
+    t.text     "bio"
+    t.date     "dob"
+    t.integer  "fans_count",  default: 0
+    t.integer  "idols_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authors", ["name"], name: "index_authors_on_name", using: :btree
+  add_index "authors", ["slug"], name: "index_authors_on_slug", using: :btree
+  add_index "authors", ["username"], name: "index_authors_on_username", using: :btree
 
   create_table "profiles", force: true do |t|
     t.integer  "author_id",                            null: false
     t.string   "role",                default: "user", null: false
     t.string   "email",                                null: false
+    t.string   "website"
     t.string   "password_digest"
     t.string   "remember_digest"
     t.string   "reset_token"
@@ -29,7 +46,7 @@ ActiveRecord::Schema.define(version: 20141121193505) do
   end
 
   add_index "profiles", ["author_id"], name: "index_profiles_on_author_id", using: :btree
-  add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true, using: :btree
+  add_index "profiles", ["email"], name: "index_profiles_on_email", using: :btree
   add_index "profiles", ["remember_digest"], name: "index_profiles_on_remember_digest", using: :btree
   add_index "profiles", ["reset_token"], name: "index_profiles_on_reset_token", using: :btree
 

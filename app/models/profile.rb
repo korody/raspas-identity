@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  # belongs_to :author
+  belongs_to :author
   attr_accessor :remember_token, :changing_password
 
   has_secure_password
@@ -13,9 +13,8 @@ class Profile < ActiveRecord::Base
   
   before_create do
     self.email.downcase! if email
-    # self.remember_token = SecureRandom.urlsafe_base64
-    # self.author = Author.create!(name: 
-      # self.email[/[^@]+/].gsub(".", " ").gsub("_", " ").titleize) 
+    self.author = Author.create!(name: 
+      self.email[/[^@]+/].gsub(".", " ").gsub("_", " ").titleize) 
   end
     
   def Profile.digest(string)

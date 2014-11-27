@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    profile = Profile.find_by(email: params[:email].downcase.strip)
+    profile = Profile.find_by(email: params[:email])
     if profile && profile.authenticate(params[:password])
       sign_in profile
       params[:remember_me] == '1' ? remember(profile) : forget(profile)

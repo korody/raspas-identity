@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'authors/show'
+
+  get 'authors/index'
+
   get 'sessions/new'
 
   root 'static_pages#home'
@@ -14,6 +18,9 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pagest#contact'
   
   resources :profiles
+  resources :authors, path: "", except: [:index, :new, :create]
+  
+  # get '*id', to: 'authors#index'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

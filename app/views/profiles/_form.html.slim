@@ -7,7 +7,6 @@
                                  autofocus: true 
     = profile.password_field :password, class: 'form-control input-lg',
                                         placeholder: 'senha'
-    = profile.hidden_field :author_id, value: '1' 
     = profile.submit 'pronto', class: 'btn btn-default btn-lg btn-block'
     .form-helper
       = link_to "já possui uma conta?", signin_path unless signed_in?

@@ -16,11 +16,11 @@ class ActiveSupport::TestCase
     password    = options[:password]    || 'password'
     remember_me = options[:remember_me] || '1'
     if integration_test?
-      post signin_path, session: { email:      profile.email,
-                                  password:    password,
-                                  remember_me: remember_me }
+      post signin_path, { email:      profile.email,
+                          password:    password,
+                          remember_me: remember_me }
     else
-      session[:user_id] = user.id
+      session[:profile_id] = profile.id
     end
   end
 
