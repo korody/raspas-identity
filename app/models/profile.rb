@@ -1,20 +1,18 @@
-class Profile < ActiveRecord::Base
+class Profile < OmniAuth::Identity::Models::ActiveRecord
   belongs_to :author
-  attr_accessor :remember_token, :changing_password
+  has_many :authentications
+  attr_accessor :remember_token
 
-  has_secure_password
-  
-  validates :email, presence: true, 
-                    length: { maximum: 60 }, 
-                    email_format: true, 
+  validates :email, length: { maximum: 60 }, 
+                    email_format: true,
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }, if: :validate_password?
-  validates :author_id, :role, presence: true
+  validates :password, length: { minimum: 6 }
+  validates :role, presence: true
   
   before_create do
     self.email.downcase! if email
     self.author = Author.create!(name: 
-      self.email[/[^@]+/].gsub(".", " ").gsub("_", " ").titleize) 
+      self.email[/[^@]+/].gsub(".", " ").gsub("_", " ").titleize)
   end
     
   def Profile.digest(string)
@@ -40,10 +38,19 @@ class Profile < ActiveRecord::Base
   def forget
     update_attribute(:remember_digest, nil)
   end
-    
-private
-
-  def validate_password?
-    new_record? || changing_password || password_digest_changed?
+  
+  def self.from_omniauth(auth)
+    where(email: auth.info.email).first_or_create do |profile|
+      profile.email = auth.info.email
+      # profile.origin = auth.info.location
+      # profile.bio = auth.info.description
+      # profile.image = auth.info.image
+      # profile.website = auth.extra.raw_info.link 
+      # profile.image = auth.extra.raw_info.image
+      profile.password = rand(36**10).to_s(36)
+      # profile.oauth_token = auth.credentials.token
+      # profile.oauth_expires_at = Time.at(auth.credentials.expires_at) unless auth.credentials.expires_at.nil?
+      # profile.save!
+    end
   end
 end

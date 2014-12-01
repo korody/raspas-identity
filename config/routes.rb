@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'authors/show'
-
-  get 'authors/index'
-
-  get 'sessions/new'
-
   root 'static_pages#home'
+  
+  get 'auth/:provider/callback', to: 'sessions#create'
+  post 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: 'sessions#create'
+  # match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   
   get '/signup', to: 'profiles#new'
   get '/signin', to: 'sessions#new'
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pagest#contact'
   
+  resources :sessions, only: [:new, :create, :destroy]
   resources :profiles
   resources :authors, path: "", except: [:index, :new, :create]
   

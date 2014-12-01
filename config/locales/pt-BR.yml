@@ -226,4 +226,7 @@ pt-BR:
       profile:
         email: e-mail
         password: senha
+      identity:
+        email: e-mail
+        password: senha
         author_id: pensador

@@ -1,4 +1,6 @@
 elvis:
   email: elvis@graceland.com
-  password_digest: <%= Profile.digest('password') %>
-  author_id: '1'
+  role: admin
+  provider: identity
+  uid: <%= Profile.new_token %>
+  author_id: 1

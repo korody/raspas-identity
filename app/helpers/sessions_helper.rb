@@ -26,8 +26,14 @@ module SessionsHelper
   end
 
   def signed_in?
-    !current_user.nil?
+    # !!current_user
+    !current_user.nil?  
   end
+  
+  # def current_user=(profile)
+  #   @current_user = profile
+  #   session[:profile_id] = profile.nil? ? profile : profile.id
+  # end
   
   def forget(profile)
     profile.forget

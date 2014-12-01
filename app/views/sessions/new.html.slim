@@ -1,9 +1,9 @@
 - provide :title, "entrar"
 = currently_at "entrar"
 .form-container
-  = form_tag signin_path, method: :post, class: 'form-signin' do
-    = label_tag :email, nil, class: 'sr-only'
-    = email_field_tag :email, params[:email], class: 'form-control input-lg', 
+  = form_tag "/auth/identity/callback", class: 'form-signin' do
+    = label_tag :auth_key, nil, class: 'sr-only'
+    = email_field_tag :auth_key, params[:email], class: 'form-control input-lg', 
                                               placeholder: 'e-mail', 
                                               autofocus: true
     = label_tag :password, nil, class: 'sr-only'
@@ -17,3 +17,5 @@
     .form-helper
       p.pull-right = link_to "cadastre-se", signup_path
       <!--p = link_to "Esqueceu sua senha?", new_password_reset_path-->
+  
+  = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"

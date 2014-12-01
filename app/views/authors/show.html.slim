@@ -2,3 +2,5 @@
 = currently_at "author"
 .author
   h1 = @author.name
+- @author.authentications.each do |authentication|
+    = authentication.provider

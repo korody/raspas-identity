@@ -1,17 +1,18 @@
 class ProfilesController < ApplicationController
   def new
-    @profile = Profile.new
+    # @profile = Profile.new
+    @profile = env['omniauth.identity']
   end
   
-  def create
-    @profile = Profile.new profile_params
-    if @profile.save
-      sign_in @profile
-      redirect_to root_path, success: 'Bem-vindo ao raspas!'
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @profile = Profile.new profile_params
+  #   if @profile.save
+  #     sign_in @profile
+  #     redirect_to root_path, success: 'Bem-vindo ao raspas!'
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def edit
   end
