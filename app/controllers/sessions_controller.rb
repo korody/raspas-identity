@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
           # The authentication has no profile assigned and there is no profile signed in
           if @authentication.provider == 'identity'
             profile = Profile.find(@authentication.uid)
-            # If the provider is identity, then it means we already created a user
+            # If the provider is identity, then it means we already created a profile
             # So we just load it up
           else
             # Look for a profile with same email or create a new one
