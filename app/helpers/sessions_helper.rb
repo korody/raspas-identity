@@ -26,8 +26,7 @@ module SessionsHelper
   end
 
   def signed_in?
-    # !!current_user
-    !current_user.nil?  
+    !!current_user
   end
   
   # def current_user=(profile)
@@ -44,6 +43,14 @@ module SessionsHelper
   def sign_out
     forget current_user
     session.delete(:profile_id)
+    @current_user = nil
+  end
+  
+  def sign_out_and_delete(profile)
+    profile.destroy
+    session.delete(:profile_id)
+    cookies.delete(:profile_id)
+    cookies.delete(:remember_token)
     @current_user = nil
   end
 

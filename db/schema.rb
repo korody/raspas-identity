@@ -20,8 +20,11 @@ ActiveRecord::Schema.define(version: 20141127175508) do
     t.integer  "profile_id"
     t.string   "provider"
     t.string   "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.string   "image"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_index "authentications", ["profile_id"], name: "index_authentications_on_profile_id", using: :btree
@@ -30,6 +33,7 @@ ActiveRecord::Schema.define(version: 20141127175508) do
     t.string   "name"
     t.string   "username"
     t.string   "slug"
+    t.string   "image"
     t.text     "bio"
     t.date     "dob"
     t.date     "dod"
@@ -47,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141127175508) do
   create_table "profiles", force: true do |t|
     t.integer  "author_id",                            null: false
     t.string   "role",                default: "user", null: false
+    t.string   "image"
     t.string   "email",                                null: false
     t.string   "password_digest"
     t.string   "remember_digest"

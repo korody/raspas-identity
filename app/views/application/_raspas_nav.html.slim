@@ -11,11 +11,16 @@
         = nav_button 'flask fw', "home", root_path, current_section: section
         = nav_button 'truck fw', "about", about_path, current_section: section
         - if signed_in?
-          = nav_button 'gear fw', "author", current_user.author, current_section: section
-          = nav_button 'sign-out fw', "sair", signout_path, current_section: section, method: :delete
+          = nav_button 'gear fw', "author", current_user.author, 
+                                            current_section: section
+          = nav_button 'sign-out fw', "sair", signout_path, 
+                                              current_section: section, 
+                                              method: :delete
         - else
-          = nav_button 'sign-in fw', "entrar", signin_path, current_section: section
-          = nav_button 'user fw', "novo usuário", signup_path, current_section: section
+          = nav_button 'sign-in fw', "entrar", signin_path, 
+                                               current_section: section
+          = nav_button 'user fw', "novo usuário", signup_path, 
+                                                  current_section: section
         <!--ul.nav.navbar-nav-->
         <!--  = nav_link 'pencil fw', "home", root_path, current_section: section-->
         <!--  = nav_link 'flask fw', "about", about_path, current_section: section-->

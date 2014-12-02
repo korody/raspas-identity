@@ -4,6 +4,8 @@ class Author < ActiveRecord::Base
   has_one :profile
   has_many :authentications, through: :profile
   
+  # delegate :image, to: :profile
+  
   before_create do
     self.username = name.gsub(/\s+/, "").downcase
     self.slug ||= name.parameterize

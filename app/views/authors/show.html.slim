@@ -1,6 +1,18 @@
 - provide :title, @author.name
 = currently_at "author"
-.author
-  h1 = @author.name
-- @author.authentications.each do |authentication|
-    = authentication.provider
+.col-lg-3
+  .author
+    = avatar_for @author.profile
+    = render 'flash'
+    .author_body
+      h1 = @author.name
+      .author_authentications
+        - Authentication.auth_providers.each do |provider_name|
+          .auth_item
+            = auth_item_media @author, provider_name, nil
+            .auth_item_body
+              h4 = provider_name
+              = link_to_connection @author, provider_name, nil
+        = link_to "apagar conta e desvincular todos os perfis", 
+          profile_path(@author.profile.id), method: :delete, 
+            class: 'warning-notice', confirm: "Você tem certeza?"

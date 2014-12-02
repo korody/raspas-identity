@@ -1,6 +1,7 @@
 - provide :title, "entrar"
 = currently_at "entrar"
 .form-container
+  = render 'flash'
   = form_tag "/auth/identity/callback", class: 'form-signin' do
     = label_tag :auth_key, nil, class: 'sr-only'
     = email_field_tag :auth_key, params[:email], class: 'form-control input-lg', 
@@ -16,6 +17,8 @@
     = submit_tag 'entrar', class: 'btn btn-lg btn-default btn-block'
     .form-helper
       p.pull-right = link_to "cadastre-se", signup_path
-      <!--p = link_to "Esqueceu sua senha?", new_password_reset_path-->
-  
-  = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
+      p = link_to "Esqueceu sua senha?", nil
+  .social-connect
+    h3 = link_to "conecte-se com o facebook", "/auth/facebook" 
+    h3 = link_to "conecte-se com o twitter", "/auth/twitter"
+    h3 = link_to "conecte-se com o google", "/auth/google"

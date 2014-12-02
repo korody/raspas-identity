@@ -4,6 +4,7 @@ class CreateAuthors < ActiveRecord::Migration
       t.string :name, index: true, unique: true
       t.string :username, index: true, unique: true
       t.string :slug, index: true, unique: true
+      t.string :image
       t.text :bio
       t.date :dob
       t.date :dod

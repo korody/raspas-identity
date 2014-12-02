@@ -7,11 +7,10 @@ gem 'bootstrap-sass'
 gem 'slim-rails'
 gem 'font-awesome-rails'
 
-# gem 'omniauth'
 gem 'omniauth-identity'
 gem 'omniauth-facebook'
-# gem 'omniauth-twitter'
-# gem 'omniauth-google'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 
 gem 'figaro'
 

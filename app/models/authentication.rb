@@ -1,17 +1,19 @@
 class Authentication < ActiveRecord::Base
   belongs_to :profile
-  # attr_accessor :changing_password
+  
+  AUTH_PROVIDERS = %w[facebook twitter google]
   
   def self.with_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |authentication|
       authentication.provider = auth.provider
       authentication.uid = auth.uid
+      authentication.oauth_token = auth.credentials.token
+      authentication.oauth_expires_at = Time.at(auth.credentials.expires_at) unless auth.credentials.expires_at.nil?
+      authentication.image = auth.info.image
     end
   end
   
-private
-
-  # def validate_password?
-  #   new_record? || changing_password || password_digest_changed?
-  # end
+  def self.auth_providers
+    AUTH_PROVIDERS
+  end
 end
