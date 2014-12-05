@@ -7,7 +7,13 @@ Minitest::Reporters.use!
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
-
+  
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:identity] = OmniAuth::AuthHash.new({
+    provider: 'identity',
+    uid: '123545'
+  })
+  
   def is_signed_in?
     !session[:profile_id].nil?
   end

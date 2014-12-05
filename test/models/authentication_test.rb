@@ -49,4 +49,14 @@
 #     @identity.password = @identity.password_confirmation = "a" * 5
 #     assert_not @identity.valid?
 #   end
+
+  # test "provider should be present" do
+  #   @profile.provider = "     "
+  #   assert_not @profile.valid?
+  # end
+  
+  # test "uid should be present" do
+  #   @profile.uid = "     "
+  #   assert_not @profile.valid?
+  # end
 # end

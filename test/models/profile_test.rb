@@ -3,18 +3,17 @@ require 'test_helper'
 class ProfileTest < ActiveSupport::TestCase
 
   def setup
-    @profile = Profile.new(email: "user@example.com", role: 'admin', provider: 'identity', 
-    uid: "15", author_id: "2")
+    @profile = Profile.new(email: 'user@example.com', password: '121212', role: 'admin', author_id: '1')
   end
 
   test "should be valid" do
     assert @profile.valid?
   end
   
-  # test "email should be present" do
-  #   @profile.email = "     "
-  #   assert_not @profile.valid?
-  # end
+  test "email should be present" do
+    @profile.email = "     "
+    assert_not @profile.valid?
+  end
   
   test "email should not be too long" do
     @profile.email = "a" * 60
@@ -46,13 +45,13 @@ class ProfileTest < ActiveSupport::TestCase
     assert_not duplicate_user.valid?
   end
   
-  test "provider should be present" do
-    @profile.provider = "     "
+  test "password should have a minimum length" do
+    @profile.password = @profile.password_confirmation = "a" * 5
     assert_not @profile.valid?
   end
   
-  test "uid should be present" do
-    @profile.uid = "     "
-    assert_not @profile.valid?
-  end
+  # test "author should be present" do
+  #   @profile.author_id = "     "
+  #   assert_not @profile.valid?
+  # end
 end

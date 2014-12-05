@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 20141127175508) do
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.string   "image"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "image",            default: "https://s3-sa-east-1.amazonaws.com/raspasimages/public/logo.png"
+    t.datetime "created_at",                                                                                   null: false
+    t.datetime "updated_at",                                                                                   null: false
   end
 
   add_index "authentications", ["profile_id"], name: "index_authentications_on_profile_id", using: :btree
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20141127175508) do
   create_table "profiles", force: true do |t|
     t.integer  "author_id",                            null: false
     t.string   "role",                default: "user", null: false
-    t.string   "image"
     t.string   "email",                                null: false
     t.string   "password_digest"
     t.string   "remember_digest"

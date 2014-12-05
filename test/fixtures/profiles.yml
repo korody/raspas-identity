@@ -1,6 +1,4 @@
 elvis:
   email: elvis@graceland.com
   role: admin
-  provider: identity
-  uid: <%= Profile.new_token %>
   author_id: 1

@@ -3,11 +3,12 @@ module ProfilesHelper
     default = { size: 500, default: 'identicon', forcedefault: 0, rating: 'g', 
       class: 'img-responsive' }
     options = default.merge(options)
+    auth_with_image = profile.authentications.where.not(image: nil)
     if profile.image.present?
       options[:size] = "#{options[:size]}x#{options[:size]}"
       image_tag profile.image, options
-    elsif profile.authentications.any?
-      image_tag profile.authentications.first.image, options
+    elsif auth_with_image.any?
+      image_tag auth_with_image.first.image, options
     else
       gravatar_id  = Digest::MD5::hexdigest(profile.email.downcase)
       gravatar_url = "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{options[:size]}&d=#{options[:default]}&r=#{options[:rating]}"
