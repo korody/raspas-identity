@@ -15,7 +15,7 @@ module NavigationHelper
   end
   
   def nav_button(icon, title, path, options = {})
-    default_class = 'btn btn-default btn-lg navbar-btn btn-round'
+    default_class = 'btn btn-default btn-lg btn-round'
     active_class = default_class + ' active'
     current_section = options.delete(:current_section)
     options[:class] = (current_section == title) ? active_class : default_class

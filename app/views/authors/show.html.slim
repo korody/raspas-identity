@@ -1,18 +1,13 @@
 - provide :title, @author.name
-= currently_at "author"
+= currently_at @author.name
 .col-lg-3
   .author
-    = avatar_for @author.profile
-    = render 'flash'
+    = avatar_for current_user
+    #purr-container
     .author_body
-      h1 = @author.name
-      .author_authentications
-        - Authentication.auth_providers.each do |provider_name|
-          .auth_item
-            = auth_item_media @author, provider_name, nil
-            .auth_item_body
-              h4 = provider_name
-              = link_to_connection @author, provider_name, nil
-        = link_to "apagar conta e desvincular todos os perfis", 
-          profile_path(@author.profile.id), method: :delete, 
-            class: 'warning-notice', confirm: "Você tem certeza?"
+      h1 = best_in_place @author, :name
+      .author_info
+        = date_of_birth @author
+        = date_of_death @author
+        = lifetime @author
+      p.bio = best_in_place @author, :bio, as: :textarea, place_holder: "clique para editar"

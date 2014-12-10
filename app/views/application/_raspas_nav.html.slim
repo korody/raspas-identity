@@ -7,22 +7,21 @@
           span.icon-bar
           span.icon-bar
           span.icon-bar
-      .collapse.navbar-collapse#site-nav
-        = nav_button 'flask fw', "home", root_path, current_section: section
-        = nav_button 'truck fw', "about", about_path, current_section: section
-        - if signed_in?
-          = nav_button 'gear fw', "author", current_user.author, 
-                                            current_section: section
-          = nav_button 'sign-out fw', "sair", signout_path, 
-                                              current_section: section, 
-                                              method: :delete
-        - else
-          = nav_button 'sign-in fw', "entrar", signin_path, 
-                                               current_section: section
-          = nav_button 'user fw', "novo usuário", signup_path, 
-                                                  current_section: section
-        <!--ul.nav.navbar-nav-->
-        <!--  = nav_link 'pencil fw', "home", root_path, current_section: section-->
-        <!--  = nav_link 'flask fw', "about", about_path, current_section: section-->
-        <!--ul.nav.navbar-nav.navbar-right-->
-        <!--  = nav_link 'user fw', "novo usuário", signup_path, current_section: section-->
+      .collapse.navbar-collapse#site-nav.clearfix
+        nav.navbar-nav
+          = nav_button 'flask fw', "home", root_path, current_section: section
+          = nav_button 'truck fw', "about", about_path, current_section: section
+        nav.navbar-nav.pull-right
+          - if signed_in?
+            = nav_button 'user fw', current_user.author.name, current_user.author, 
+                                              current_section: section
+            = nav_button 'gear fw', "editar conta", edit_profile_path(current_user), 
+                                              current_section: section
+            = nav_button 'sign-out fw', "sair", signout_path, 
+                                                current_section: section, 
+                                                method: :delete
+          - else
+              = nav_button 'user fw', "cadastrar", signup_path, 
+                                              current_section: section
+              = nav_button 'sign-in fw', "entrar", signin_path, 
+                                                   current_section: section

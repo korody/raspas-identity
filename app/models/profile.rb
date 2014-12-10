@@ -6,7 +6,7 @@ class Profile < OmniAuth::Identity::Models::ActiveRecord
   validates :email, length: { maximum: 60 }, 
                     email_format: true,
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }, if: :validate_password? 
+  validates :password, length: { minimum: 6 }, allow_blank: true
   validates :role, presence: true
   
   delegate :name, :username, :image, :aka, :bio, :dob, :dod, :website, to: :author
@@ -54,7 +54,7 @@ class Profile < OmniAuth::Identity::Models::ActiveRecord
   
 private
 
-  def validate_password?
-    new_record? || changing_password || password_digest_changed?
-  end
+  # def validate_password?
+  #   new_record? || changing_password || password_digest_changed?
+  # end
 end

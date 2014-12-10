@@ -1,0 +1,13 @@
+= render 'error_messages', object: @profile
+= form_for @profile do |profile|
+  = profile.label :email, class: 'sr-only'
+  = profile.text_field :email, class: 'form-control input-lg',
+                               placeholder: 'e-mail', 
+                               autofocus: true 
+  = profile.password_field :password, class: 'form-control input-lg',
+                                      placeholder: 'senha'
+  = profile.submit 'atualizar', class: 'btn btn-info btn-lg btn-block'
+  .form-helper
+    = link_to "apagar conta e desvincular todos os perfis", 
+        profile_path(@profile.id), method: :delete, 
+          class: 'warning-notice', data: { confirm: "Você está presetes a apagar o seu perfil e sua conexão com este pensador. Você tem certeza?" }

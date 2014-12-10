@@ -49,9 +49,4 @@ class ProfileTest < ActiveSupport::TestCase
     @profile.password = @profile.password_confirmation = "a" * 5
     assert_not @profile.valid?
   end
-  
-  # test "author should be present" do
-  #   @profile.author_id = "     "
-  #   assert_not @profile.valid?
-  # end
 end

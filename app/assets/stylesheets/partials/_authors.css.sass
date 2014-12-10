@@ -2,11 +2,20 @@
   @extend .tile
   
 .author_body
+  color: $text
   padding: $baseMargin
   
   h1
-    font-size: 32px
+    font-size: 26px
     margin: 0
+    
+  .author_info
+    color: $light-text
+    margin: $minMargin 0 $extraMargin
+  
+  p.bio
+    margin-top: $minMargin
+    font-size: 15px
 
 .author_authentications
   margin-top: $baseMargin
@@ -30,3 +39,10 @@
     
 a.warning-notice 
   color: $coral
+  
+.purr   
+  @extend .alert
+  @extend .alert-danger
+  position: absolute
+  left: 200px
+  top: 20px

@@ -1,2 +1,7 @@
-h1 Profiles#edit
-p Find me in app/views/profiles/edit.html.slim
+- provide :title, "editar conta"
+= currently_at "editar conta"
+.form-container
+  = render 'flash'
+  = avatar_for current_user
+  = render 'profile_authentications'
+  = render 'edit_form'

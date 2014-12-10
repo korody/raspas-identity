@@ -1,0 +1,7 @@
+.profile_authentications
+  - Authentication.auth_providers.each do |provider_name|
+    .auth_item
+      = auth_item_media current_user, provider_name, nil
+      .auth_item_body
+        h4 = provider_name
+        = link_to_connection current_user, provider_name, nil

@@ -1,8 +1,8 @@
 class Author < ActiveRecord::Base
-  validates_presence_of :name
+  validates :name, length: { minimum: 2 }
 
   has_one :profile
-  has_many :authentications, through: :profile
+  # has_many :authentications, through: :profile
   
   # delegate :image, to: :profile
   
@@ -13,5 +13,13 @@ class Author < ActiveRecord::Base
   
   def to_param
     username
+  end
+  
+  def alive?
+    !self.dod
+  end
+  
+  def taken?
+    !!self.profile
   end
 end

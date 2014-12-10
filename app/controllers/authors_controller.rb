@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  respond_to :html, :json
   before_action :find_author, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -11,11 +12,8 @@ class AuthorsController < ApplicationController
   end
   
   def update
-    if @author.update(author_params)
-      redirect_to @author, success: "Pensador atualizado com sucesso."
-    else
-      render 'edit'
-    end
+    @author.update_attributes(author_params)
+    respond_with_bip @author
   end
   
 private
