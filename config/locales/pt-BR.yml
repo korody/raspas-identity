@@ -31,10 +31,9 @@ pt-BR:
     - Sexta
     - Sábado
     formats:
-      default: ! '%Y'
-      long: ! '%d de %B de %Y'
+      default: ! '%d/%m/%Y'
+      long: ! '%e %b %Y'
       short: ! '%d de %B'
-      year: ! '%Y'
     month_names:
     - 
     - Janeiro
