@@ -8,7 +8,7 @@ class Authentication < ActiveRecord::Base
       authentication.provider = auth.provider
       authentication.uid = auth.uid
       authentication.oauth_token = auth.credentials.token
-      authentication.oauth_expires_at = Time.at(auth.credentials.expires_at) unless auth.credentials.expires_at.nil?
+      authentication.oauth_expires_at = Time.at(auth.credentials.expires_at)
       authentication.image = auth.info.image
     end
   end

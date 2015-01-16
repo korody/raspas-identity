@@ -8,11 +8,10 @@ jQuery ->
     return
     
   $.datepicker.setDefaults
-    appendText: 'dd/mm/aaaa'
+    appendText: ' formato: dd/mm/aaaa'
     changeYear: true
     closeText: 'pronto'
     currentText: 'hoje'
     dateFormat: 'dd/mm/yy'
     maxDate: '0'
     showButtonPanel: true
-    yearRange: 'c-10:+1'

@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :find_profile, only: [:edit, :update]
+  before_action :find_profile, only: [:edit, :update, :destroy]
   
   def new
     @profile = env['omniauth.identity']

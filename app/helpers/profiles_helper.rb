@@ -35,7 +35,7 @@ module ProfilesHelper
         authentication = profile.authentications.find_by_provider(provider_name)
         if profile.authentications.size == 1
           link_to "desvincular e apagar conta", 
-            profile_path(profile.id), method: :delete, data: { confirm: "Você está presetes a apagar o seu perfil e sua conexão com este pensador. Você tem certeza?" }
+            profile_path(profile), method: :delete, data: { confirm: "Você está presetes a apagar o seu perfil e sua conexão com este pensador. Você tem certeza?" }
         else
           link_to "desvincular", authentication_path(authentication.id), 
                                  method: :delete
